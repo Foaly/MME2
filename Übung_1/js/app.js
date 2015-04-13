@@ -15,6 +15,7 @@ window.onload = function() {
     
     // hide the controls if we leave fullscreen mode
     document.addEventListener("mozfullscreenchange", function() { if (!document.mozFullScreenElement) { videoplayer.controls = false; } });
+    document.addEventListener("MSFullscreenChange", function() { if (!document.msFullscreenElement) { videoplayer.controls = false; } });
     document.addEventListener("webkitExitFullscreen", function() { videoplayer.controls = false; }); // TODO: test this on chrome
 }
 
