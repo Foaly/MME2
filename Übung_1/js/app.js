@@ -6,12 +6,15 @@ window.onload = function() {
     document.getElementById("playPauseButton").addEventListener("click", playpauseCallback);
     document.getElementById("stopButton").addEventListener("click", stopCallback);
     document.getElementById("fullscreenButton").addEventListener("click", fullscreenCallback);
+    videoplayer.addEventListener("click", playpauseCallback);
     videoplayer.addEventListener("timeupdate", videoPlaybackCallback);
     document.getElementById("filterinput").addEventListener("change", filterCallback);
     
     var progressBar = document.getElementById("progressBar");
-    progressBar.max = videoplayer.duration;
     progressBar.addEventListener("input", progressBarCallback);
+    progressBar.addEventListener("change", progressBarCallback);
+    document.addEventListener("loadedmetadata", function() { progressBar.max = videoplayer.duration; });    
+    videoplayer.addEventListener("loadedmetadata", function() { progressBar.max = videoplayer.duration });    
     
     // hide the controls if we leave fullscreen mode
     document.addEventListener("mozfullscreenchange", function() { if (!document.mozFullScreenElement) { videoplayer.controls = false; } });

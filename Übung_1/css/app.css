@@ -32,6 +32,10 @@ button {
     height: 26px;
 }
 
+button:hover {
+    background: #666;
+}
+
 #playPauseButton {
     width: 31px;
 }
@@ -80,6 +84,9 @@ input[type=range]::-moz-range-track {
   border-radius: 5px;
   border: 0px solid #000101;
 }
+input[type=range]:hover::-moz-range-track {
+    background: #666;
+}
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 1px #670000, 0px 0px 0px #810000;
   border: 0px solid #ff1e00;
@@ -118,9 +125,9 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
   height: 16px;
 }
-input[type=range]:focus::-ms-fill-lower {
-  background: #484d4d;
+input[type=range]:hover::-ms-fill-lower {
+    background: #666;
 }
-input[type=range]:focus::-ms-fill-upper {
-  background: #545a5a;
+input[type=range]:hover::-ms-fill-upper {
+    background: #666;
 }
