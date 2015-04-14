@@ -40,6 +40,11 @@ button:hover {
     width: 31px;
 }
 
+p {
+    margin: 20px 0px 0px 0px;
+    font-size: 10pt;
+}
+
 /* Costumized range input for the progress bar
  * taken from https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
  */
