@@ -12,5 +12,5 @@
     "start": "node server.js"
   },
   "author": "Maximilian Wagenbach",
-  "license": "public domain"
+  "license": "Zlib"
 }
