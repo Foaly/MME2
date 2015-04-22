@@ -13,8 +13,8 @@ window.onload = function() {
     var progressBar = document.getElementById("progressBar");
     progressBar.addEventListener("input", progressBarCallback);
     progressBar.addEventListener("change", progressBarCallback);
-    document.addEventListener("loadedmetadata", function() { progressBar.max = videoplayer.duration; });    
-    videoplayer.addEventListener("loadedmetadata", function() { progressBar.max = videoplayer.duration });    
+    progressBar.max = videoplayer.duration; // for firefox
+    videoplayer.addEventListener("loadedmetadata", function() { progressBar.max = videoplayer.duration; }); // for IE
     
     // hide the controls if we leave fullscreen mode
     document.addEventListener("mozfullscreenchange", function() { if (!document.mozFullScreenElement) { videoplayer.controls = false; } });
