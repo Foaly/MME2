@@ -1,6 +1,11 @@
+var port = 8080;
+
 var express = require('express');
 var app = express();
-app.get('/', function(req, res){
-    res.send('Hello World!');
+
+app.get('/*', function(request, result){
+    result.sendFile(__dirname + "/public" + request._parsedUrl.path); // this is clearly a security hazard
 });
-app.listen(8080);
+
+app.listen(port);
+console.log("Server running at http://127.0.0.1:" + port);
