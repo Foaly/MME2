@@ -4,13 +4,20 @@
   "description": "A webserver with node.js",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "frisby": "^0.8.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "Maximilian Wagenbach",
-  "license": "Zlib"
+  "license": "Zlib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Foaly/MME2.git"
+  }
 }
