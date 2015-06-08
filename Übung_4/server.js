@@ -8,6 +8,13 @@ var port = process.env.PORT || 8080;
 var router = express.Router();
 
 
+var bookNotFoundError = {
+    type: "error",
+    statusCode: 404,
+    msg: "Requested resource not found"
+}
+
+
 // parse Content-Type:application/json into JSON
 app.use(bodyParser.json({ type: ['application/json', 'text/plain'] }))
 
@@ -35,10 +42,29 @@ router.route('/books/:id')
         var book = Books.getBookById(request.params.id);
 
         if(book === undefined) {
-            console.log("Error: Book not found");
+            // book was not found send an error JSON
+            result.status(bookNotFoundError.statusCode).send(bookNotFoundError);
         }
         else {
             result.send(book);
+        }
+    })
+    .put(function(request, response) {
+        // check if there is any data parsed by bodyParser
+        if(!_.isEmpty(request.body)) {
+            // get what we need
+            var pickedResults = _.pick(request.body, 'title', 'author', 'year');
+
+            var wasUpdated = Books.updateBook(request.params.id, pickedResults);
+
+            if(wasUpdated) {
+                // books was succesfully updated, send the book back
+                response.send(pickedResults);
+            }
+            else {
+                // book was not found send an error JSON
+                response.status(bookNotFoundError.statusCode).send(bookNotFoundError);
+            }
         }
     });
 
