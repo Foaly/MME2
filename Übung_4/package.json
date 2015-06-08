@@ -4,8 +4,10 @@
   "description": "A simple RESTful webservice",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.12.4",
     "express": "^4.12.3",
-    "frisby": "^0.8.5"
+    "frisby": "^0.8.5",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
