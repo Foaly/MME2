@@ -36,7 +36,7 @@ exports.getAllBooks = function() {
  * @param  {Number} id
  * @return {Object} book element or undefined
  */
-exports.getBookById = function(id) {
+exports.getBook = function(id) {
     if(id < books.length) {
         return books[id];
     }
@@ -66,6 +66,21 @@ exports.addBook = function(element) {
 exports.updateBook = function(id, element) {
     if(id < books.length) {
         books[id] = element;
+        return true;
+    }
+    return false;
+};
+
+/**
+ * Deletes a book. Returns true on succes and false if the book could
+ * not be found.
+ * @param  {Number} id      The id of the book to update
+ * @return {Boolean}        False if book could not be found, True otherwise
+ */
+exports.deleteBook = function(id) {
+    if(id < books.length) {
+        // remove 1 element
+        books.splice(id, 1);
         return true;
     }
     return false;

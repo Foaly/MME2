@@ -30,8 +30,10 @@ router.route('/books/')
             // get what we need
             var pickedResults = _.pick(request.body, 'title', 'author', 'year');
 
-            // send an JSON object containing the id back
             var newId = Books.addBook(pickedResults);
+            // send an JSON object containing the id back
+            result.status(201);
+            result.location('/books/' + newId); // good practice
             result.send({_id: newId});
         }
         result.status(400).send();
@@ -39,7 +41,7 @@ router.route('/books/')
 
 router.route('/books/:id')
     .get(function(request, result) {
-        var book = Books.getBookById(request.params.id);
+        var book = Books.getBook(request.params.id);
 
         if(book === undefined) {
             // book was not found send an error JSON
@@ -59,12 +61,24 @@ router.route('/books/:id')
 
             if(wasUpdated) {
                 // books was succesfully updated, send the book back
-                response.send(pickedResults);
+                response.status(200).send(pickedResults);
             }
             else {
                 // book was not found send an error JSON
                 response.status(bookNotFoundError.statusCode).send(bookNotFoundError);
             }
+        }
+    })
+    .delete(function(request, response){
+        var wasDeleted = Books.deleteBook(request.params.id);
+
+        if(wasDeleted) {
+            // books was succesfully deleted
+            response.status(204).send();
+        }
+        else {
+            // book was not found send an error JSON
+            response.status(bookNotFoundError.statusCode).send(bookNotFoundError);
         }
     });
 
