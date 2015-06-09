@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Simple RESTful webservice</title>
+</head>
+<body>
+<div class="container">
+    <h1>Simple RESTful webservice</h1>
+<p></p>
+
+<h2>Summary</h2>
+<table class="table table-bordered table-condensed swagger--summary">
+    <thead>
+    <tr>
+        <th>Path</th>
+        <th>Method</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+            <tr>
+                    <td class="swagger--summary-path" rowspan="2">
+                        <a href="#method-/books">/books</a>
+                    </td>
+                <td>
+                    <a href="#method-/books-get">GET</a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#method-/books-post">POST</a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                    <td class="swagger--summary-path" rowspan="3">
+                        <a href="#method-/books/{id}">/books/{id}</a>
+                    </td>
+                <td>
+                    <a href="#method-/books/{id}-delete">DELETE</a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#method-/books/{id}-get">GET</a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#method-/books/{id}-put">PUT</a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+<h2>Paths</h2>
+
+    
+<span id="method-/books"></span>
+    <div class="swagger--panel-method-get panel">
+    <div class="panel-heading">
+        <div class="method-summary"></div>
+        <h3 id="method-/books-get" class="panel-title"><span class="method-name">GET</span> <strong>/books</strong></h3>
+    </div>
+    <div class="panel-body">
+        <section class="sw-method-description">
+            Gets all available <code>Book</code> objects.
+        </section>
+        
+        
+        
+    <section class="sw-response-body">
+        <p></p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-response-code"></th>
+                <th class="sw-response-description"></th>
+                <th class="sw-response-data-type hidden-xs hidden-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>200</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            An array of books.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+        
+    <section class="json-schema-array-items">
+    <div class="json-inner-schema">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</section>    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+        
+    <section class="json-schema-array-items">
+    <div class="json-inner-schema">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</section>    </div>
+</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+            </div>
+</div>    <div class="swagger--panel-method-post panel">
+    <div class="panel-heading">
+        <div class="method-summary"></div>
+        <h3 id="method-/books-post" class="panel-title"><span class="method-name">POST</span> <strong>/books</strong></h3>
+    </div>
+    <div class="panel-body">
+        <section class="sw-method-description">
+            Adds a new <code>Book</code> object to the collection.
+        </section>
+        
+        
+    <section class="sw-request-params">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>newBook
+                            <span class="json-property-required"></span>
+                        </td>
+                    <td>The new <code>Book</code> JSON-object, that should be added.</td>
+                    <td>body</td>
+                    <td>
+                        <span class="json-property-type">
+        object
+</span>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+        
+    <section class="sw-response-body">
+        <p></p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-response-code"></th>
+                <th class="sw-response-description"></th>
+                <th class="sw-response-data-type hidden-xs hidden-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>201</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            An array of books.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+        <div class="panel-heading">
+                <h3 class="panel-title">result</h3>
+        </div>
+    <div class="panel-body">
+            <section class="json-schema-properties">
+    <dl>
+            <dt>
+                <span class="json-property-name">_id:</span>
+                <span class="json-property-type">
+        number
+</span>
+
+            </dt>
+            <dd>
+                
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+    </dl>
+</section>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+        <div class="panel-heading">
+                <h3 class="panel-title">result</h3>
+        </div>
+    <div class="panel-body">
+            <section class="json-schema-properties">
+    <dl>
+            <dt>
+                <span class="json-property-name">_id:</span>
+                <span class="json-property-type">
+        number
+</span>
+
+            </dt>
+            <dd>
+                
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+    </dl>
+</section>
+
+    </div>
+</div></td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            The body was empty.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+            </div>
+</div>    
+<span id="method-/books/{id}"></span>
+    <div class="swagger--panel-method-delete panel">
+    <div class="panel-heading">
+        <div class="method-summary"></div>
+        <h3 id="method-/books/{id}-delete" class="panel-title"><span class="method-name">DELETE</span> <strong>/books/{id}</strong></h3>
+    </div>
+    <div class="panel-body">
+        <section class="sw-method-description">
+            Deletes a book by id.
+        </section>
+        
+        
+    <section class="sw-request-params">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id
+                            <span class="json-property-required"></span>
+                        </td>
+                    <td>ID of the book that needs to be deleted</td>
+                    <td>path</td>
+                    <td>
+                        <span class="json-property-type">
+        integer
+</span>
+    <span class="json-property-format">(int64)</span>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+        
+    <section class="sw-response-body">
+        <p></p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-response-code"></th>
+                <th class="sw-response-description"></th>
+                <th class="sw-response-data-type hidden-xs hidden-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>204</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Deletion was succesful.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Book was not found.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+            </div>
+</div>    <div class="swagger--panel-method-get panel">
+    <div class="panel-heading">
+        <div class="method-summary"></div>
+        <h3 id="method-/books/{id}-get" class="panel-title"><span class="method-name">GET</span> <strong>/books/{id}</strong></h3>
+    </div>
+    <div class="panel-body">
+        <section class="sw-method-description">
+            Find a book by id.
+        </section>
+        
+        
+    <section class="sw-request-params">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id
+                            <span class="json-property-required"></span>
+                        </td>
+                    <td>ID of the book that needs to be fetched</td>
+                    <td>path</td>
+                    <td>
+                        <span class="json-property-type">
+        integer
+</span>
+    <span class="json-property-format">(int64)</span>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+        
+    <section class="sw-response-body">
+        <p></p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-response-code"></th>
+                <th class="sw-response-description"></th>
+                <th class="sw-response-data-type hidden-xs hidden-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>200</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Successful operation. Return the book.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</div></td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Book was not found.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+            </div>
+</div>    <div class="swagger--panel-method-put panel">
+    <div class="panel-heading">
+        <div class="method-summary"></div>
+        <h3 id="method-/books/{id}-put" class="panel-title"><span class="method-name">PUT</span> <strong>/books/{id}</strong></h3>
+    </div>
+    <div class="panel-body">
+        <section class="sw-method-description">
+            Update a book by id.
+        </section>
+        
+        
+    <section class="sw-request-params">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id
+                            <span class="json-property-required"></span>
+                        </td>
+                    <td>ID of the book that needs to be updated</td>
+                    <td>path</td>
+                    <td>
+                        <span class="json-property-type">
+        integer
+</span>
+    <span class="json-property-format">(int64)</span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>book
+                            <span class="json-property-required"></span>
+                        </td>
+                    <td>The <code>Book</code> JSON-object, that should replace the old one.</td>
+                    <td>body</td>
+                    <td>
+                        <span class="json-property-type">
+        object
+</span>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+        
+    <section class="sw-response-body">
+        <p></p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="sw-response-code"></th>
+                <th class="sw-response-description"></th>
+                <th class="sw-response-data-type hidden-xs hidden-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>200</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Successful operation. Return the book.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Book">Book</a>
+
+    </div>
+</div></td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>
+                        <div class="sw-response-description-text">
+                            Book was not found.
+                        </div>
+                        <section class="visible-xs visible-sm">
+                            
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div>                        </section>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+    <div class="panel panel-definition">
+    <div class="panel-body">
+            <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+
+    </div>
+</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+            </div>
+</div>
+
+<h2>Definitions</h2>
+
+    
+    <div class="panel panel-definition">
+        <div class="panel-heading">
+                <h3 class="panel-title"><a name="/definitions/Book"></a>Book:
+                    <span class="json-property-type"><span class="json-property-type">
+        object
+</span>
+
+</span>
+                </h3>
+        </div>
+    <div class="panel-body">
+            <section class="json-schema-properties">
+    <dl>
+            <dt>
+                <span class="json-property-name">title:</span>
+                <span class="json-property-type">
+        string
+</span>
+
+            </dt>
+            <dd>
+                The name of the book.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+            <dt>
+                <span class="json-property-name">author:</span>
+                <span class="json-property-type">
+        string
+</span>
+
+            </dt>
+            <dd>
+                The name of the author of the book.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+            <dt>
+                <span class="json-property-name">year:</span>
+                <span class="json-property-type">
+        string
+</span>
+
+            </dt>
+            <dd>
+                The year the book came out.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+    </dl>
+</section>
+
+    </div>
+</div>    
+    <div class="panel panel-definition">
+        <div class="panel-heading">
+                <h3 class="panel-title"><a name="/definitions/Error"></a>Error:
+                    <span class="json-property-type"><span class="json-property-type">
+        object
+</span>
+
+</span>
+                </h3>
+        </div>
+    <div class="panel-body">
+            <section class="json-schema-properties">
+    <dl>
+            <dt>
+                <span class="json-property-name">type:</span>
+                <span class="json-property-type">
+        string
+</span>
+
+            </dt>
+            <dd>
+                The type of the error.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+            <dt>
+                <span class="json-property-name">statusCode:</span>
+                <span class="json-property-type">
+        number
+</span>
+
+            </dt>
+            <dd>
+                The HTTP response code.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+            <dt>
+                <span class="json-property-name">msg:</span>
+                <span class="json-property-type">
+        string
+</span>
+
+            </dt>
+            <dd>
+                The error message.
+                <div class="json-inner-schema">
+                    
+                </div>
+            </dd>
+    </dl>
+</section>
+
+    </div>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Simple RESTful webservice"
+    },
+    "paths": {
+        "/books": {
+            "get": {
+                "description": "Gets all available `Book` objects.\n",
+                "responses": {
+                    "200": {
+                        "description": "An array of books.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Book"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Adds a new `Book` object to the collection.",
+                "parameters": [
+                    {
+                        "name": "newBook",
+                        "in": "body",
+                        "description": "The new `Book` JSON-object, that should be added.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "An array of books.",
+                        "schema": {
+                            "title": "result",
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The body was empty."
+                    }
+                }
+            }
+        },
+        "/books/{id}": {
+            "get": {
+                "description": "Find a book by id.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID of the book that needs to be fetched",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Return the book.",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    },
+                    "404": {
+                        "description": "Book was not found.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a book by id.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID of the book that needs to be updated",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "book",
+                        "in": "body",
+                        "description": "The `Book` JSON-object, that should replace the old one.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Return the book.",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    },
+                    "404": {
+                        "description": "Book was not found.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes a book by id.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID of the book that needs to be deleted",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deletion was succesful."
+                    },
+                    "404": {
+                        "description": "Book was not found.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Book": {
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The name of the book."
+                },
+                "author": {
+                    "type": "string",
+                    "description": "The name of the author of the book."
+                },
+                "year": {
+                    "type": "string",
+                    "description": "The year the book came out."
+                }
+            }
+        },
+        "Error": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the error."
+                },
+                "statusCode": {
+                    "type": "number",
+                    "description": "The HTTP response code."
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "The error message."
+                }
+            }
+        }
+    }
+}
