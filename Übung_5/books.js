@@ -57,8 +57,8 @@ exports.validateInput = function(element) {
       element.description = String(element.description);
   }
 
-  if( _.has(element, 'name') && typeof element.name === "string" &&
-      _.has(element, 'ISBN') && typeof element.ISBN === "string") {
+  if( _.has(element, 'name') && _.isString(obj.name) &&
+      _.has(element, 'ISBN') && _.isString(obj.ISBN)) {
           return element;
   }
   return null;

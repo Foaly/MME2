@@ -63,8 +63,20 @@ app.use(auth); // on all routes
 // configure the router
 router.route('/books/')
     .get(function(request, result) {
+        var paginationLimit = Number(_.defaults(_.pick(request.query, 'limit'), {limit: 0}).limit);
+        var paginationSkip = Number(_.defaults(_.pick(request.query, 'skip'), {skip: 0}).skip);
+        // get query parameters for wildcard search
+        var queryWildcard = _.mapObject(_.pick(request.query,'name', 'description', 'ISBN'), function(val, key){
+            return new RegExp(val, 'i');
+        });
+        // get query parameters for number search (must not be converted to RegEx)
+        var queryNumbers = _.mapObject(_.pick(request.query, 'state'), function(val, key) {
+            return Number(val);
+        });
+        // combine to one query
+        query = _.extend(queryWildcard, queryNumbers);
         // send all books
-        db.books.find(function(err, docs) {
+        db.books.find(query).limit(paginationLimit).skip(paginationSkip, function(err, docs) {
           result.status(200).send(docs);
         });
     })
