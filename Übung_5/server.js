@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var basicAuth = require('basic-auth');
 var _ = require('underscore');
 var mongojs = require('mongojs');
 
@@ -39,7 +40,25 @@ var bookNotFoundError = {
 app.use(bodyParser.json({ type: ['application/json', 'text/plain'] }));
 
 // enable authentication
-app.use(express.basicAuth("user", "password"));
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.status(401).send();
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'user' && user.pass === 'password') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
+app.use(auth); // on all routes
 
 // configure the router
 router.route('/books/')
