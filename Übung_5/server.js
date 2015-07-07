@@ -150,14 +150,20 @@ router.route('/books/:id')
           response.status(400).send(id + " is not a valid database id!");
           return;
         }
-        db.books.remove({_id: mongojs.ObjectId(id)}, function(error, docs) {
-          if(error) {
-            response.status(400).send("Error deleting book: " + error);
-          }
-          else if (docs) {
-            response.status(204).send();
+        // check if id is in database
+        db.books.count({_id: mongojs.ObjectId(id)}, function(err, n) {
+          if(n === 1) {
+            db.books.remove({_id: mongojs.ObjectId(id)}, function(error, state) {
+              if(error) {
+                response.status(400).send("Error deleting book from mongoDB: " + error);
+              }
+              else if(state.ok === 1) {
+                response.status(204).send();
+              }
+            });
           }
           else {
+            // book was not found send an error JSON
             response.status(bookNotFoundError.statusCode).send(bookNotFoundError);
           }
         });

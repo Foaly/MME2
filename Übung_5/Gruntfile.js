@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         extensions: 'js',
         specNameMatcher: 'spec'
       },
-      all: ['tests/']
+      all: []
     }
   });
 
